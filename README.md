@@ -1,12 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">Sistem Informasi Kehadiran Guru Berbasis QR Code</h1>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+Aplikasi Presensi Guru Berbasis Web Menggunakan Teknologi QR Code
 </p>
 
+<p align="center">
+<strong>Studi Kasus: SMK Islam Cipasung</strong>
+</p>
+
+---
+
+## Tentang Aplikasi
+
+Sistem Informasi Kehadiran Guru Berbasis QR Code merupakan aplikasi yang dirancang untuk mempermudah proses pencatatan kehadiran guru secara cepat, akurat, dan real-time.
+
+Dengan memanfaatkan teknologi QR Code, guru dapat melakukan presensi hanya dengan melakukan pemindaian kode QR yang telah disediakan oleh sistem.
+
+## Fitur Utama
+
+- Login Administrator
+- Manajemen Data Guru
+- Manajemen Data Kehadiran
+- Generate QR Code
+- Scan QR Code Presensi
+- Rekap Kehadiran Guru
+- Laporan Kehadiran
+- Dashboard Statistik Kehadiran
+
+## Teknologi yang Digunakan
+
+- Laravel
+- PHP
+- MySQL
+- Bootstrap
+- JavaScript
+- QR Code Generator
+
+## Instalasi
+
+```bash
+git clone https://github.com/sofian27/Prensensi_QRcode.git
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
