@@ -31,4 +31,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::post('/laporan/kirim', [LaporanController::class, 'kirim'])->name('laporan.kirim');
     Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
+    Route::put('/profil', [ProfileController::class, 'update'])->name('profil.update');
+    Route::put('/profil/password', [ProfileController::class, 'updatePassword'])->name('profil.password');
 });

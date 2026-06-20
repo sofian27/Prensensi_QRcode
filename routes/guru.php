@@ -16,4 +16,6 @@ Route::prefix('guru')->name('guru.')->middleware(['auth', 'guru'])->group(functi
     Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
     Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
+    Route::put('/profil', [ProfileController::class, 'update'])->name('profil.update');
+    Route::put('/profil/password', [ProfileController::class, 'updatePassword'])->name('profil.password');
 });

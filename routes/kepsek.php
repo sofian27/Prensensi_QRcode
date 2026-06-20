@@ -20,4 +20,6 @@ Route::prefix('kepsek')->name('kepsek.')->middleware(['auth', 'kepsek'])->group(
     Route::get('/pesan', [PesanController::class, 'index'])->name('pesan.index');
     Route::post('/pesan', [PesanController::class, 'store'])->name('pesan.store');
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
+    Route::put('/profil', [ProfileController::class, 'update'])->name('profil.update');
+    Route::put('/profil/password', [ProfileController::class, 'updatePassword'])->name('profil.password');
 });
