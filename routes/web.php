@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\TerminalScanController;
+use App\Http\Controllers\ScanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,11 +13,14 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-// Public scanner page — placeholder for Step 2 implementation
-Route::get('/scan', function () {
-    return view('scan.index');
-})->name('scan.index');
+// Public scanner terminal — no auth required
+// POST /scan is rate-limited: 60 requests per minute per IP
+Route::get('/scan', [ScanController::class, 'index'])->name('scan.index');
+Route::post('/scan', [ScanController::class, 'store'])
+    ->middleware('throttle:60,1')
+    ->name('scan.store');
 
+// Legacy admin scan endpoint — kept intact, still guarded by auth + admin
 Route::post('/terminal-scan', [TerminalScanController::class, 'store'])
     ->middleware(['auth', 'admin'])
     ->name('terminal.scan.store');
@@ -38,4 +42,5 @@ Route::get('/dashboard', function () {
         default => redirect('/'),
     };
 })->middleware('auth')->name('dashboard');
+
 

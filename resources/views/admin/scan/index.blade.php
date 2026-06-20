@@ -35,7 +35,7 @@
             <span>Mode otomatis membaca jam server sekolah untuk menentukan masuk atau pulang.</span>
         </div>
 
-        <a class="btn" href="{{ url('/scan') }}" target="_blank" rel="noopener">
+        <a class="btn" href="{{ route('scan.index') }}" target="_blank" rel="noopener">
             @include('components.icon', ['name' => 'scan'])
             Buka Halaman Scanner
         </a>
