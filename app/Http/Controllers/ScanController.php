@@ -16,6 +16,10 @@ class ScanController extends Controller
 
     public function store(Request $request, PresensiService $presensiService)
     {
+        // Force JSON negotiation so Laravel never renders an HTML error page
+        // that could echo back the raw qr_code value.
+        $request->headers->set('Accept', 'application/json');
+
         // Normalise field name: accept both 'qr_code' and 'kode_qr'
         if (! $request->filled('qr_code') && $request->filled('kode_qr')) {
             $request->merge(['qr_code' => $request->input('kode_qr')]);
@@ -40,9 +44,10 @@ class ScanController extends Controller
                 'message' => $errorMessage,
             ], 422);
         } catch (\Throwable $e) {
+            // Log server-side only — never include the raw QR token.
             Log::error('ScanController: unexpected error during public scan', [
                 'exception' => $e->getMessage(),
-                'trace'     => $e->getTraceAsString(),
+                'file'      => $e->getFile().':'.$e->getLine(),
             ]);
 
             return response()->json([

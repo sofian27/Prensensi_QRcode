@@ -7,166 +7,6 @@
     <title>Scanner Presensi — SMK Islam Cipasung</title>
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <style>
-        /* ── Public scanner terminal — standalone layout ─────────────────── */
-        .scan-page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 28px 16px 48px;
-        }
-
-        /* Hero strip across the top */
-        .scan-page-hero {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 18px;
-            width: 100%;
-            max-width: 680px;
-            border: 1px solid rgba(215, 222, 232, .9);
-            border-radius: 8px;
-            background:
-                linear-gradient(135deg, rgba(255,255,255,.96), rgba(248,250,252,.92)),
-                linear-gradient(90deg, rgba(15,118,110,.10), transparent);
-            padding: 20px 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
-        }
-        @media (max-width: 640px) {
-            .scan-page-hero { flex-direction: column; }
-        }
-
-        /* The main terminal card */
-        .scan-terminal-card {
-            width: 100%;
-            max-width: 680px;
-        }
-
-        /* Mode selector — 3 columns for 3 options */
-        .scan-mode-3 {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-        .scan-mode-3 label { cursor: pointer; }
-        .scan-mode-3 input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            width: auto;
-            margin: 0;
-        }
-        .scan-mode-3 span {
-            display: grid;
-            min-height: 44px;
-            place-items: center;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--primary-dark);
-            font-weight: 900;
-            text-align: center;
-        }
-        .scan-mode-3 input:checked + span {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 10px 22px rgba(11, 107, 97, .18);
-        }
-
-        /* Result area */
-        .scan-result {
-            display: none;
-            gap: 8px;
-            border: 1px solid #b7d9d4;
-            border-radius: 8px;
-            background: linear-gradient(180deg, #f8fcfb, #e8f5f3);
-            padding: 16px 18px;
-        }
-        .scan-result.visible { display: grid; }
-        .scan-result-name {
-            font-size: clamp(20px, 5vw, 28px);
-            font-weight: 900;
-            color: var(--primary-dark);
-            line-height: 1.15;
-        }
-        .scan-result-meta {
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .scan-result-type {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 8px;
-            background: var(--primary);
-            color: #fff;
-            padding: 5px 10px;
-            font-size: 13px;
-            font-weight: 900;
-            width: max-content;
-        }
-        .scan-result-type.pulang {
-            background: #b98a2a;
-        }
-
-        /* Fullscreen button */
-        .fullscreen-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: #fff;
-            color: #10283d;
-            padding: 10px 14px;
-            cursor: pointer;
-            font-weight: 800;
-            font-size: 14px;
-            white-space: nowrap;
-            transition: background .16s ease, border-color .16s ease;
-        }
-        .fullscreen-btn:hover {
-            background: var(--primary-soft);
-            border-color: var(--primary);
-        }
-        .fullscreen-btn .icon { flex-shrink: 0; }
-        .fullscreen-btn[data-fs="on"] { border-color: var(--primary); color: var(--primary); }
-
-        /* Bottom footer strip */
-        .scan-page-footer {
-            margin-top: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 680px;
-            gap: 12px;
-        }
-        .scan-page-footer a {
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 700;
-        }
-        .scan-page-footer a:hover { color: var(--primary); }
-        .scan-clock {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--muted);
-        }
-
-        /* Fullscreen mode — fill the screen */
-        :fullscreen .scan-page,
-        :-webkit-full-screen .scan-page {
-            min-height: 100vh;
-            padding-top: 40px;
-        }
-    </style>
 </head>
 <body class="app-body">
 <div class="scan-page">
@@ -230,7 +70,7 @@
             </label>
         </div>
 
-        {{-- Scanner input (hidden visually but reachable by scanner hardware) --}}
+        {{-- Scanner input --}}
         <label for="public-scanner">Kode QR</label>
         <input type="text"
                id="public-scanner"
@@ -250,7 +90,7 @@
         </div>
 
         {{-- Action row --}}
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div class="scan-actions">
             <button class="btn" type="button" id="btn-manual-submit" style="flex: 1;">
                 @include('components.icon', ['name' => 'check']) Simpan Manual
             </button>
@@ -277,3 +117,4 @@
 <script src="{{ asset('assets/js/qr-terminal.js') }}"></script>
 </body>
 </html>
+

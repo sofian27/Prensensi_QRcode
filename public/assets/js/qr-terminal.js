@@ -183,12 +183,13 @@
                     );
                     locked = false;
                     input.value = '';
+                    focusScanner();
                     return;
                 }
 
                 // ── 429: rate-limited ────────────────────────────────────
                 if (response.status === 429) {
-                    setStatus('Terlalu banyak permintaan. Tunggu sebentar lalu scan ulang.', 'error');
+                    setStatus('Terlalu banyak percobaan scan. Tunggu sebentar lalu coba lagi.', 'error');
                     setTimeout(() => unlock('Siap scan ulang kartu.', 'info'), 3000);
                     return;
                 }
