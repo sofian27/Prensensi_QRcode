@@ -1,12 +1,17 @@
 <!doctype html>
 <html lang="id">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Masuk - {{ config('app.name') }}</title>
+    @include('components.seo', [
+        'title' => 'Login — Presensi QR Acanlogic',
+        'description' => 'Halaman masuk sistem presensi guru berbasis QR Code untuk SMK Islam Cipasung.',
+        'robots' => 'noindex, nofollow, noarchive',
+        'type' => 'website'
+    ])
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
+
 <body class="login-body">
     <main class="login-page">
         <section class="login-visual">
@@ -28,14 +33,16 @@
             </a>
 
             <h1>Selamat Datang</h1>
-            <p>Gunakan kredensial resmi yang diberikan sekolah. Sistem akan mengarahkan Anda ke ruang kerja sesuai hak akses.</p>
+            <p>Gunakan kredensial resmi yang diberikan sekolah. Sistem akan mengarahkan Anda ke ruang kerja sesuai hak
+                akses.</p>
 
             @include('components.alert')
 
             <form method="post" action="{{ route('login.store') }}">
                 @csrf
                 <label>Username atau Email</label>
-                <input name="login" value="{{ old('login') }}" required autofocus placeholder="contoh: admin atau guru001">
+                <input name="login" value="{{ old('login') }}" required autofocus
+                    placeholder="contoh: admin atau guru001">
 
                 <label>Password</label>
                 <input type="password" name="password" required placeholder="Masukkan password akun">
@@ -50,4 +57,5 @@
         </section>
     </main>
 </body>
+
 </html>
