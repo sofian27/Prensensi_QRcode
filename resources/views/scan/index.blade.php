@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @include('components.seo', [
+        'title' => 'Scanner Presensi — Presensi QR Acanlogic',
+        'description' => 'Terminal pemindaian QR untuk mencatat presensi guru secara otomatis menggunakan scanner USB HID.',
+        'robots' => 'noindex, nofollow, noarchive'
+    ])
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Scanner Presensi — SMK Islam Cipasung</title>
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>

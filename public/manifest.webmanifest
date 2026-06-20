@@ -1,0 +1,22 @@
+{
+  "name": "Presensi QR Acanlogic",
+  "short_name": "Presensi",
+  "description": "Sistem absensi presensi guru berbasis QR Code untuk SMK Islam Cipasung.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/assets/images/logo.jpeg",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/images/logo.jpeg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ]
+}
