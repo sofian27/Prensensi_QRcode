@@ -499,6 +499,24 @@ label {
     align-items: start;
 }
 
+.profile-layout-refined {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.profile-layout-refined .profile-summary {
+    position: static;
+}
+
+.profile-info-stack,
+.profile-form-stack {
+    display: grid;
+    gap: 20px;
+    align-content: start;
+}
+
 .profile-summary {
     position: sticky;
     top: 24px;
@@ -564,6 +582,30 @@ label {
     margin: -8px 0 0;
     color: var(--muted);
     font-size: 13px;
+}
+
+.form-error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.form-note {
+    margin-top: -10px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.profile-password-card {
+    display: grid;
+    gap: 18px;
 }
 
 .profile-summary span {
@@ -1393,6 +1435,7 @@ label {
     .stats,
     .form-grid,
     .profile-layout,
+    .profile-layout-refined,
     .profile-card dl,
     .role-strip,
     .workflow-section,
