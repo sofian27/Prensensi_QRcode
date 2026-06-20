@@ -603,6 +603,10 @@ label {
     margin-top: 20px;
 }
 
+.form-row-spaced {
+    margin-top: 15px;
+}
+
 .profile-password-card {
     display: grid;
     gap: 18px;

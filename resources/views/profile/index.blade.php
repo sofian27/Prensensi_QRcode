@@ -110,9 +110,8 @@
                     </div>
                 @endif
             </div>
-            
             @if ($user->guru)
-                <div style="margin-top: 15px;">
+                <div class="form-row-spaced">
                     <label>Alamat</label>
                     <textarea name="alamat" rows="3" placeholder="Alamat lengkap">{{ old('alamat', $user->guru->alamat) }}</textarea>
                     @error('alamat')<div class="form-error">{{ $message }}</div>@enderror
