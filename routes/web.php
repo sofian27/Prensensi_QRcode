@@ -12,6 +12,11 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
+// Public scanner page — placeholder for Step 2 implementation
+Route::get('/scan', function () {
+    return view('scan.index');
+})->name('scan.index');
+
 Route::post('/terminal-scan', [TerminalScanController::class, 'store'])
     ->middleware(['auth', 'admin'])
     ->name('terminal.scan.store');
@@ -33,3 +38,4 @@ Route::get('/dashboard', function () {
         default => redirect('/'),
     };
 })->middleware('auth')->name('dashboard');
+

@@ -9,7 +9,7 @@ class DirektoriGuruController extends Controller
 {
     public function index()
     {
-        return view('admin.scan.index', [
+        return view('admin.direktori_guru.index', [
             'users' => User::with('guru')
                 ->whereIn('role', ['guru', 'kepala_sekolah'])
                 ->orderByRaw("CASE WHEN role = 'kepala_sekolah' THEN 0 ELSE 1 END")
@@ -18,3 +18,4 @@ class DirektoriGuruController extends Controller
         ]);
     }
 }
+

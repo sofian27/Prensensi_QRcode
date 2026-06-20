@@ -15,7 +15,7 @@ class ProfilPenggunaController extends Controller
     {
         abort_unless(in_array($user->role, ['guru', 'kepala_sekolah'], true), 404);
 
-        return view('admin.scan.edit', [
+        return view('admin.direktori_guru.edit', [
             'user' => $user->loadMissing('guru'),
         ]);
     }
@@ -73,6 +73,6 @@ class ProfilPenggunaController extends Controller
             }
         });
 
-        return redirect()->route('admin.scan.index')->with('success', 'Profil pengguna berhasil diperbarui.');
+        return redirect()->route('admin.direktori_guru.index')->with('success', 'Profil pengguna berhasil diperbarui.');
     }
 }

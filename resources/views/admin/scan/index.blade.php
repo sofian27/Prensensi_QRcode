@@ -1,76 +1,44 @@
 @extends('layouts.admin')
 
+@section('title', 'Scan Presensi')
+
 @section('content')
 <section class="page-hero compact">
     <div>
         <span class="page-kicker">Scanner Terminal</span>
         <h2 class="page-title">Presensi QR Acanlogic</h2>
-        <p class="page-subtitle">Gunakan scanner QR/Barcode USB HID Keyboard Mode. Input scanner akan tetap aktif dan presensi diproses otomatis saat scanner mengirim ENTER.</p>
+        <p class="page-subtitle">Terminal pemindai kartu QR/Barcode USB HID Keyboard Mode untuk mencatat presensi guru secara otomatis.</p>
     </div>
     <span class="hero-badge">@include('components.icon', ['name' => 'scan']) USB HID Ready</span>
 </section>
 
-<div class="scan-grid">
-    <form class="card scanner-card scanner-terminal" method="post" action="{{ route('terminal.scan.store') }}" data-scanner-terminal data-endpoint="{{ route('terminal.scan.store') }}" data-status-id="admin-scan-status" data-mode-name="jenis_scan">
-        @csrf
+<div class="scan-grid" style="grid-template-columns: 1fr;">
+    <section class="card scanner-card" style="max-width: 560px;">
         <div class="teacher-scan-display">
             <div class="scan-symbol">@include('components.icon', ['name' => 'scan'])</div>
             <span>Terminal Presensi Guru</span>
-            <strong>Silakan Scan Kartu QR</strong>
-            <p>Admin memilih jenis presensi, guru cukup scan kartu menggunakan alat Acanlogic.</p>
+            <strong>Scanner Presensi Aktif</strong>
+            <p>Halaman scanner publik digunakan oleh petugas piket atau admin di meja penerimaan. Klik tombol di bawah untuk membuka terminal scan.</p>
         </div>
 
-        <div class="scanner-head">
+        <div class="scanner-head" style="margin-top: 1rem;">
             @include('components.icon', ['name' => 'clock'])
             <div>
-                <strong>Jenis Presensi</strong>
-                <span>Mode otomatis membaca jam server sekolah.</span>
+                <strong>Cara Penggunaan</strong>
+                <span>Buka halaman scanner, arahkan alat Acanlogic ke kartu QR guru.</span>
             </div>
         </div>
 
-        <div class="scan-mode compact" aria-label="Pilih jenis presensi">
-            <label><input type="radio" name="jenis_scan" value="otomatis" checked><span>Otomatis</span></label>
-            <label><input type="radio" name="jenis_scan" value="masuk"><span>Scan Masuk</span></label>
-            <label><input type="radio" name="jenis_scan" value="pulang"><span>Scan Pulang</span></label>
+        <div class="scan-help" style="margin: 1rem 0;">
+            <span>Scanner menggunakan mode USB HID Keyboard. Presensi diproses otomatis saat scanner mengirim ENTER.</span>
+            <span>Jam masuk normal sampai 07.30. Lebih dari itu dicatat dengan keterangan terlambat.</span>
+            <span>Mode otomatis membaca jam server sekolah untuk menentukan masuk atau pulang.</span>
         </div>
 
-        <label for="admin-scanner">Kode QR</label>
-        <input type="text" id="admin-scanner" name="qr_code" autocomplete="off" autofocus data-scanner-input placeholder="Scan kartu QR di sini">
-
-        <div id="admin-scan-status" class="scan-status">Scanner siap. Scan kartu QR guru.</div>
-        <div class="scan-help">
-            <span>Otomatis: jika sudah scan masuk dan waktu sudah siang/sore, scan berikutnya dicatat sebagai pulang.</span>
-            <span>Jam masuk normal sampai 07.30. Lewat dari itu tetap tersimpan, dengan keterangan terlambat.</span>
-        </div>
-        <button class="btn" type="submit">@include('components.icon', ['name' => 'check']) Simpan Manual</button>
-    </form>
-
-    <section class="card">
-        <h3 class="compact-title">Direktori Kartu Guru</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($users as $user)
-                    <tr>
-                        <td>{{ $user->guru?->nama ?? $user->name }}</td>
-                        <td>{{ str_replace('_', ' ', $user->role) }}</td>
-                        <td><span @class(['status-pill', 'status-empty' => $user->guru?->status !== 'aktif'])>{{ $user->guru?->status ?? '-' }}</span></td>
-                        <td><a class="btn ghost" href="{{ route('admin.scan.edit', $user) }}">Edit</a></td>
-                    </tr>
-                @empty
-                    <tr><td colspan="4">Belum ada data guru.</td></tr>
-                @endforelse
-            </tbody>
-        </table>
+        <a class="btn" href="{{ url('/scan') }}" target="_blank" rel="noopener">
+            @include('components.icon', ['name' => 'scan'])
+            Buka Halaman Scanner
+        </a>
     </section>
 </div>
-
-<script src="{{ asset('assets/js/qr-terminal.js') }}"></script>
 @endsection

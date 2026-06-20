@@ -9,10 +9,10 @@
         <h2 class="page-title">Edit Profil {{ $user->role === 'kepala_sekolah' ? 'Kepala Sekolah' : 'Guru' }}</h2>
         <p class="page-subtitle">Perbarui identitas, status akun, dan foto profil yang akan terlihat di halaman profil pengguna.</p>
     </div>
-    <a class="btn ghost" href="{{ route('admin.scan.index') }}">Kembali</a>
+    <a class="btn ghost" href="{{ route('admin.direktori_guru.index') }}">Kembali</a>
 </section>
 
-<form class="card profile-edit-form" method="post" action="{{ route('admin.scan.update', $user) }}" enctype="multipart/form-data">
+<form class="card profile-edit-form" method="post" action="{{ route('admin.direktori_guru.update', $user) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 

@@ -11,7 +11,8 @@
             <a @class(['active' => request()->routeIs('admin.dashboard')]) href="{{ route('admin.dashboard') }}"><span>@include('components.icon', ['name' => 'dashboard'])</span>Command Center</a>
             <a @class(['active' => request()->routeIs('admin.guru.*')]) href="{{ route('admin.guru.index') }}"><span>@include('components.icon', ['name' => 'users'])</span>Data Guru</a>
             <a @class(['active' => request()->routeIs('admin.presensi.*')]) href="{{ route('admin.presensi.index') }}"><span>@include('components.icon', ['name' => 'clock'])</span>Presensi</a>
-            <a @class(['active' => request()->routeIs('admin.scan.*')]) href="{{ route('admin.scan.index') }}"><span>@include('components.icon', ['name' => 'users'])</span>Direktori Guru</a>
+            <a @class(['active' => request()->routeIs('admin.scan.index')]) href="{{ route('admin.scan.index') }}"><span>@include('components.icon', ['name' => 'scan'])</span>Scan Presensi</a>
+            <a @class(['active' => request()->routeIs('admin.direktori_guru.*')]) href="{{ route('admin.direktori_guru.index') }}"><span>@include('components.icon', ['name' => 'users'])</span>Direktori Guru</a>
             <a @class(['active' => request()->routeIs('admin.laporan.*')]) href="{{ route('admin.laporan.index') }}"><span>@include('components.icon', ['name' => 'report'])</span>Laporan</a>
             <a @class(['active' => request()->routeIs('admin.notifikasi.*')]) href="{{ route('admin.notifikasi.index') }}"><span>@include('components.icon', ['name' => 'bell'])</span>Arahan Kepsek</a>
             <a @class(['active' => request()->routeIs('admin.profil.*')]) href="{{ route('admin.profil.index') }}"><span>@include('components.icon', ['name' => 'shield'])</span>Profil</a>
